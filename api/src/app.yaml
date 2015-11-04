@@ -1,0 +1,19 @@
+application: sample
+version: 0
+runtime: go
+api_version: go1
+
+handlers:
+- url: /robots\.txt
+  static_files: assets/robots.txt
+  upload: web/robots\.txt
+  expiration: "14d"
+
+- url: /favicon\.ico
+  static_files: assets/favicon.ico
+  upload: web/favicon\.ico
+  expiration: "14d"
+
+- url: /.*
+  script: _go_app
+

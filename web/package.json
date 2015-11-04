@@ -1,0 +1,28 @@
+{
+  "name": "gaego-ng2-skeleton",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.html",
+  "dependencies": {
+    "angular2": "^2.0.0-alpha.44"
+  },
+  "devDependencies": {
+    "babel": "^5.8.23",
+    "gulp": "^3.9.0",
+    "gulp-tsconfig-update": "^1.0.5",
+    "gulp-tslint": "^3.2.0",
+    "gulp-typescript": "^2.8.1",
+    "run-sequence": "^1.1.2",
+    "systemjs-builder": "^0.14.9",
+    "tslint": "^2.4.5",
+    "typescript": "^1.5.3",
+    "typescript-formatter": "^1.1.0"
+  },
+  "scripts": {
+    "setup": "bower install && dtsm install",
+    "build": "gulp build",
+    "start": "live-server --open=src"
+  },
+  "author": "",
+  "license": "MIT"
+}
