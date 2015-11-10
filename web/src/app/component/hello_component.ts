@@ -6,11 +6,14 @@ import {HTTP_PROVIDERS, Response} from "angular2/http";
 
 @Component({
   selector: "lc-hello",
+  providers: [LoggerService, HelloService],
   template: `
-  <h1>{{ hello }} {{ greeting | uppercase }}!</h1>
-  <input type="text" [value]="greeting" (input)="greet($event.target.value);" placeholder="name"/>
+  <div class="root">
+    <h1>{{ hello }} {{ greeting | uppercase }}!</h1>
+    <input type="text" [value]="greeting" (input)="greet($event.target.value);" placeholder="name"/>
+  </div>
   `,
-  styles: [`h1 {color: #8ae6ff; }`]
+  styleUrls: ["./app/component/hello_component.css"]
 })
 export class HelloComponent {
 
@@ -27,5 +30,5 @@ export class HelloComponent {
   }
 }
 
-bootstrap(HelloComponent, [HTTP_PROVIDERS, LoggerService, HelloService]);
+bootstrap(HelloComponent, [HTTP_PROVIDERS]);
 
