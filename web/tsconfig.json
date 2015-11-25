@@ -2,23 +2,22 @@
     "compilerOptions": {
         "target": "es5",
         "module": "commonjs",
-        "declaration": false,
-        "sourceMap": true,
         "noImplicitAny": true,
-        "removeComments": false,
-        "preserveConstEnums": false,
-        "suppressImplicitAnyIndexErrors": false,
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true
     },
+    "filesGlob": [
+        "./script/**/*.ts"
+    ],
     "files": [
-        "./src/app/bootstrap.ts",
-        "./src/app/component/components.ts",
-        "./src/app/component/hello_component.ts",
-        "./src/app/pipe/pipes.ts",
-        "./src/app/pipe/uppercase_pipe.ts",
-        "./src/app/service/hello_service.ts",
-        "./src/app/service/logger_service.ts",
-        "./src/app/service/services.ts"
+        "script/bootstrap.ts",
+        "script/component/components.ts",
+        "script/component/hello.ts",
+        "script/component/world.ts",
+        "script/pipe/pipes.ts",
+        "script/pipe/uppercase_pipe.ts",
+        "script/service/app.ts",
+        "script/service/logger.ts",
+        "script/service/services.ts"
     ]
 }

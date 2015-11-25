@@ -4,24 +4,25 @@
   "description": "",
   "main": "index.html",
   "dependencies": {
-    "angular2": "^2.0.0-alpha.44"
+    "angular2": "^2.0.0-alpha.46"
   },
   "devDependencies": {
-    "babel": "^5.8.23",
-    "gulp": "^3.9.0",
-    "gulp-tsconfig-update": "^1.0.5",
-    "gulp-tslint": "^3.2.0",
-    "gulp-typescript": "^2.8.1",
-    "run-sequence": "^1.1.2",
-    "systemjs-builder": "^0.14.9",
-    "tslint": "^2.4.5",
-    "typescript": "^1.5.3",
-    "typescript-formatter": "^1.1.0"
+    "fs-extra": "^0.26.2",
+    "tsconfig-cli": "^0.1.1",
+    "tslint": "^3.0.0",
+    "typescript": "^1.6.2",
+    "typescript-formatter": "^1.1.0",
+    "webpack": "^1.12.9"
   },
   "scripts": {
+    "start": "live-server --entry-file=index.html",
+    "dest": "node publish.js",
+    "predest": "npm run build",
     "setup": "bower install && dtsm install",
-    "build": "gulp build",
-    "start": "live-server --open=src"
+    "build": "npm run _tsc && npm run _bundle",
+    "_tsc": "$(npm bin)/tsc",
+    "pre_tsc": "$(npm bin)/tsconfig -u && $(npm bin)/tsfmt -r",
+    "_bundle": "$(npm bin)/webpack"
   },
   "author": "",
   "license": "MIT"

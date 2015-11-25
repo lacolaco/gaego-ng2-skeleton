@@ -1,8 +1,6 @@
 node_modules
-bower_components
 typings
 bundle.js
 
-src/**/*.js
-src/**/*.js.map
+script/**/*.js
 
