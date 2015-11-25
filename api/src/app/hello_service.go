@@ -1,13 +1,15 @@
 package app
 
 import (
-    "net/http"
+  "net/http"
+  "fmt"
+  "time"
 )
 
-func helloService(){
-  http.HandleFunc("/api/hello", handlerHello)
+func helloService() {
+  http.HandleFunc("/api/data", handlerGetData)
 }
 
-func handlerHello(w http.ResponseWriter, r *http.Request) {
-    w.Write([]byte("Hello"))
+func handlerGetData(w http.ResponseWriter, r *http.Request) {
+  w.Write([]byte(fmt.Sprintf(`{"time": %v}`, time.Now().Unix() * 1000)))
 }
