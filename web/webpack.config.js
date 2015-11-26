@@ -1,8 +1,19 @@
 module.exports = {
   context: __dirname + "/script",
-  entry: "./bootstrap.js",
+  entry: "./bootstrap.ts",
+  resolve: {
+    extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
+  },
+  module: {
+    loaders: [
+      {test: /\.tsx?$/, loader: 'ts-loader'}
+    ]
+  },
   output: {
-    path: __dirname,
+    path: "../api/src/web",
     filename: "bundle.js"
+  },
+  devServer: {
+    historyApiFallback: true
   }
 };

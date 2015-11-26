@@ -11,6 +11,7 @@ import {Response} from "angular2/http";
   <h2>Hello</h2>
   <button (click)="sayHello()">Say Hello</button>
   <hr>
+  <pre>{{ time | date:"short" }}</pre>
   <pre>{{ time | date:"medium" }}</pre>
   `
 })

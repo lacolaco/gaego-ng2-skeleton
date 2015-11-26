@@ -8,21 +8,21 @@
   },
   "devDependencies": {
     "fs-extra": "^0.26.2",
+    "ts-loader": "^0.7.2",
     "tsconfig-cli": "^0.1.1",
-    "tslint": "^3.0.0",
     "typescript": "^1.6.2",
     "typescript-formatter": "^1.1.0",
-    "webpack": "^1.12.9"
+    "webpack": "^1.12.9",
+    "webpack-dev-server": "^1.14.0"
   },
   "scripts": {
-    "start": "live-server --entry-file=index.html",
+    "start": "$(npm bin)/webpack-dev-server",
     "dest": "node publish.js",
     "predest": "npm run build",
     "setup": "bower install && dtsm install",
-    "build": "npm run _tsc && npm run _bundle",
-    "_tsc": "$(npm bin)/tsc",
-    "pre_tsc": "$(npm bin)/tsconfig -u && $(npm bin)/tsfmt -r",
-    "_bundle": "$(npm bin)/webpack"
+    "build": "$(npm bin)/webpack",
+    "watch": "$(npm bin)/webpack -w",
+    "prebuild": "$(npm bin)/tsconfig -u && $(npm bin)/tsfmt -r"
   },
   "author": "",
   "license": "MIT"
