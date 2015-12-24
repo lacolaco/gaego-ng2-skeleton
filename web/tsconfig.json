@@ -7,9 +7,11 @@
         "emitDecoratorMetadata": true
     },
     "filesGlob": [
+        "./typings/bundle.d.ts",
         "./script/**/*.ts"
     ],
     "files": [
+        "typings/bundle.d.ts",
         "script/bootstrap.ts",
         "script/component/app.ts",
         "script/component/hello.ts",
