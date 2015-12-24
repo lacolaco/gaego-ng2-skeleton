@@ -1,12 +1,11 @@
-"use strict";
-
-import {Component, Observable} from "angular2/angular2";
-import {LoggerService, AppService} from "../service/services";
+import {Component} from "angular2/core";
 import {Response} from "angular2/http";
+
+import AppService from "../service/app";
+import LoggerService from "../service/logger";
 
 @Component({
   selector: "hello",
-  providers: [AppService],
   template: `
   <h2>Hello</h2>
   <button (click)="sayHello()">Say Hello</button>
@@ -15,7 +14,7 @@ import {Response} from "angular2/http";
   <pre>{{ time | date:"medium" }}</pre>
   `
 })
-export class HelloComponent {
+export default class HelloComponent {
 
   private time: Date;
 
@@ -40,5 +39,6 @@ export class HelloComponent {
 
   sayHello() {
     alert("Hello!");
+    this.logger.log(`${new Date().toString()}: Hello!`);
   }
 }

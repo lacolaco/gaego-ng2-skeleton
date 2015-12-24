@@ -6,8 +6,10 @@ module.exports = {
   },
   module: {
     loaders: [
-      {test: /\.tsx?$/, loader: 'ts-loader'}
-    ]
+      {test: /\.tsx?$/, loader: 'ts-loader'},
+      {test: /\.css$/, loader: 'css-loader'}
+    ],
+    noParse: [/.+\/angular2\/bundles\/.+/]
   },
   output: {
     path: "../api/src/web",

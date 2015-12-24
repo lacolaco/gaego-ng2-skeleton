@@ -1,0 +1,11 @@
+.root {
+  padding: 5px 10px 5px 10px;
+}
+
+ul.row {
+  padding-left: 0;
+}
+
+ul.row li{
+  display: inline;
+}

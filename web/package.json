@@ -4,25 +4,27 @@
   "description": "",
   "main": "index.html",
   "dependencies": {
-    "angular2": "^2.0.0-alpha.46"
+    "angular2": "^2.0.0-beta.0",
+    "rxjs": "^5.0.0-beta.0"
   },
   "devDependencies": {
-    "fs-extra": "^0.26.2",
+    "css-loader": "^0.23.1",
+    "fs-extra": "^0.26.3",
     "ts-loader": "^0.7.2",
     "tsconfig-cli": "^0.1.1",
-    "typescript": "^1.6.2",
-    "typescript-formatter": "^1.1.0",
+    "typescript": "^1.7.5",
+    "typescript-formatter": "^1.2.0",
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.0"
   },
   "scripts": {
-    "start": "$(npm bin)/webpack-dev-server",
-    "dest": "node publish.js",
+    "start": "npm run prebuild && $(npm bin)/webpack-dev-server",
+    "dest": "cp ./index.html ../api/src/web/index.html",
     "predest": "npm run build",
     "setup": "bower install && dtsm install",
     "build": "$(npm bin)/webpack",
-    "watch": "$(npm bin)/webpack -w",
-    "prebuild": "$(npm bin)/tsconfig -u && $(npm bin)/tsfmt -r"
+    "prebuild": "$(npm bin)/tsconfig -u && $(npm bin)/tsfmt -r",
+    "watch": "$(npm bin)/webpack -w"
   },
   "author": "",
   "license": "MIT"

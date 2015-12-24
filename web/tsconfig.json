@@ -11,13 +11,11 @@
     ],
     "files": [
         "script/bootstrap.ts",
-        "script/component/components.ts",
+        "script/component/app.ts",
         "script/component/hello.ts",
         "script/component/world.ts",
-        "script/pipe/pipes.ts",
-        "script/pipe/uppercase_pipe.ts",
+        "script/pipe/reversePipe.ts",
         "script/service/app.ts",
-        "script/service/logger.ts",
-        "script/service/services.ts"
+        "script/service/logger.ts"
     ]
 }

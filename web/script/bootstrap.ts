@@ -1,47 +1,22 @@
-"use strict";
+require("../index.css");
 
-import "reflect-metadata";
-import "zone.js";
+import "../node_modules/angular2/bundles/angular2-polyfills.js";
+import "rxjs/Rx";
 
-import {bootstrap, provide, Component} from "angular2/angular2";
+import {bootstrap} from "angular2/platform/browser";
+import {provide, PLATFORM_PIPES} from "angular2/core";
 import {HTTP_PROVIDERS} from "angular2/http";
-import {ROUTER_PROVIDERS, ROUTER_DIRECTIVES, RouteConfig, LocationStrategy, PathLocationStrategy} from "angular2/router";
+import {ROUTER_PROVIDERS, ROUTER_DIRECTIVES} from "angular2/router";
 
-import {
-HelloComponent,
-WorldComponent
-} from "./component/components";
-
-import {
-LoggerService
-} from "./service/services";
-
-@Component({
-  selector: "app",
-  template: `
-    <div class="root">
-    <ul>
-      <li><a [router-link]="['Hello']">Hello</a></li>
-      <li><a [router-link]="['World']">World</a></li>
-    </ul>
-    <router-outlet></router-outlet>
-    </div>
-  `,
-  directives: [
-    ROUTER_DIRECTIVES
-  ]
-})
-@RouteConfig([
-  { path: "/", redirectTo: "/hello" },
-  { path: "/hello", component: HelloComponent, name: "Hello" },
-  { path: "/world", component: WorldComponent, name: "World" }
-])
-class AppComponent {
-}
+import AppComponent from "./component/app";
+import AppService from "./service/app";
+import LoggerService from "./service/logger";
+import ReversePipe from "./pipe/reversePipe";
 
 bootstrap(AppComponent, [
   HTTP_PROVIDERS,
   ROUTER_PROVIDERS,
-  provide(LocationStrategy, { useClass: PathLocationStrategy }),
-  LoggerService
+  AppService,
+  LoggerService,
+  provide(PLATFORM_PIPES, { useValue: [ReversePipe], multi: true })
 ]);
