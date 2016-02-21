@@ -1,15 +1,14 @@
 import {Injectable} from "angular2/core";
 import {Http} from "angular2/http";
+import {Observable} from "rxjs/Observable";
 
 @Injectable()
-export default class AppService {
-  private http: Http;
-
-  constructor(http: Http) {
-    this.http = http;
+export class AppBackend {
+  constructor(private http: Http) {
   }
 
-  getData(): any {
-    return this.http.get("/api/data");
+  getData(): Observable<any> {
+    return this.http.get("/api/data")
+      .map((res) => res.json());
   }
 }

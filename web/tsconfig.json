@@ -7,16 +7,16 @@
         "emitDecoratorMetadata": true
     },
     "filesGlob": [
-        "./typings/bundle.d.ts",
         "./script/**/*.ts"
     ],
     "files": [
-        "typings/bundle.d.ts",
+        "script/app.ts",
         "script/bootstrap.ts",
-        "script/component/app.ts",
         "script/component/hello.ts",
         "script/component/world.ts",
-        "script/pipe/reversePipe.ts",
+        "script/pipe.ts",
+        "script/pipe/reverse.ts",
+        "script/service.ts",
         "script/service/app.ts",
         "script/service/logger.ts"
     ]

@@ -1,14 +1,16 @@
-import {Component, Inject} from "angular2/core";
-import {ROUTER_DIRECTIVES, RouteConfig} from "angular2/router";
+import * as moment from "moment";
 
-import HelloComponent from "./hello";
-import WorldComponent from "./world";
+import {Component} from "angular2/core";
+import {RouteConfig} from "angular2/router";
+
+import {HelloComponent} from "./component/hello";
+import {WorldComponent} from "./component/world";
 
 @Component({
   selector: "app",
   template: `
     <div class="root">
-      <h1>Angular 2 Sample</h1>
+      <h1>Angular 2 Example</h1>
       <p>Powered by <a href="http://momentjs.com/">Moment.js</a>: {{ clock }}</p>
       <hr>
       <p>Router sample</p>
@@ -20,27 +22,20 @@ import WorldComponent from "./world";
       <hr>
       <router-outlet></router-outlet>
     </div>
-  `,
-  directives: [
-    ROUTER_DIRECTIVES
-  ],
-  styles: [require("./app.css").toString()]
+  `
 })
 @RouteConfig([
-  { path: "/", redirectTo: ["Hello"] },
+  { path: "*", redirectTo: ["Hello"] },
   { path: "/hello", component: HelloComponent, name: "Hello" },
   { path: "/world", component: WorldComponent, name: "World" }
 ])
-export default class AppComponent {
+export class App {
 
   private clock: string;
 
-  constructor( @Inject("moment") private moment: moment.MomentStatic) {
-  }
-
   ngOnInit() {
     setInterval(() => {
-      this.clock = this.moment().format("YYYY/MM/DD HH:mm:ss.SS");
+      this.clock = moment().format("YYYY/MM/DD HH:mm:ss.SS");
     }, 1)
   }
 }

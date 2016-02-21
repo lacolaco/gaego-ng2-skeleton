@@ -1,25 +1,26 @@
-require("../index.css");
+///<reference path="../node_modules/angular2/typings/browser.d.ts"/>
+///<reference path="../typings/bundle.d.ts"/>
 
-import "../node_modules/angular2/bundles/angular2-polyfills.js";
+// Angular 2 Dependencies
+import "es6-promise";
+import "es6-collections";
+import "zone.js";
+import "reflect-metadata";
 import "rxjs/Rx";
 
-import * as moment from "moment";
-
 import {bootstrap} from "angular2/platform/browser";
-import {provide, PLATFORM_PIPES} from "angular2/core";
+import {provide, PLATFORM_PIPES, PLATFORM_DIRECTIVES} from "angular2/core";
 import {HTTP_PROVIDERS} from "angular2/http";
 import {ROUTER_PROVIDERS, ROUTER_DIRECTIVES} from "angular2/router";
 
-import AppComponent from "./component/app";
-import AppService from "./service/app";
-import LoggerService from "./service/logger";
-import ReversePipe from "./pipe/reversePipe";
+import {App} from "./app";
+import {APP_SERVICES} from "./service";
+import {APP_PIPES} from "./pipe";
 
-bootstrap(AppComponent, [
+bootstrap(App, [
   HTTP_PROVIDERS,
   ROUTER_PROVIDERS,
-  AppService,
-  LoggerService,
-  provide(PLATFORM_PIPES, { useValue: [ReversePipe], multi: true }),
-  provide("moment", { useValue: moment })
+  provide(PLATFORM_DIRECTIVES, { useValue: ROUTER_DIRECTIVES, multi: true }),
+  APP_SERVICES,
+  provide(PLATFORM_PIPES, { useValue: APP_PIPES, multi: true }),
 ]);

@@ -4,29 +4,35 @@
   "description": "",
   "main": "index.html",
   "dependencies": {
-    "angular2": "^2.0.0-beta.0",
+    "angular2": "^2.0.0-beta.7",
+    "es6-collections": "^0.5.5",
+    "es6-promise": "^3.1.2",
+    "es6-shim": "0.33.13",
     "moment": "^2.10.6",
-    "rxjs": "^5.0.0-beta.0"
+    "reflect-metadata": "0.1.2",
+    "rxjs": "5.0.0-beta.2",
+    "zone.js": "0.5.15"
   },
   "devDependencies": {
-    "css-loader": "^0.23.1",
+    "browserify": "^13.0.0",
     "dtsm": "^0.13.0",
     "fs-extra": "^0.26.3",
-    "ts-loader": "^0.7.2",
+    "local-web-server": "^1.1.1",
     "tsconfig-cli": "^0.1.1",
+    "tsify": "^0.13.2",
     "typescript": "^1.7.5",
     "typescript-formatter": "^1.2.0",
-    "webpack": "^1.12.9",
-    "webpack-dev-server": "^1.14.0"
+    "watchify": "^3.7.0"
   },
   "scripts": {
-    "start": "npm run prebuild && $(npm bin)/webpack-dev-server",
-    "dest": "cp ./index.html ../api/src/web/index.html",
+    "reinstall": "rm -rf ./node_modules && npm i",
+    "start": "npm run prebuild && ws --spa index.html --verbose",
+    "dist": "node tools/dist.js",
     "predest": "npm run build",
-    "setup": "$(npm bin)/dtsm install",
-    "build": "$(npm bin)/webpack",
-    "prebuild": "$(npm bin)/tsconfig -u && $(npm bin)/tsfmt -r",
-    "watch": "$(npm bin)/webpack -w"
+    "setup": "dtsm install",
+    "build": "browserify -o bundle.js -v -p [tsify] index.ts",
+    "prebuild": "tsconfig -u && tsfmt -r",
+    "watch": "watchify -o bundle.js -v -p [tsify] index.ts"
   },
   "author": "",
   "license": "MIT"

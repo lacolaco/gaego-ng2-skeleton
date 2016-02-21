@@ -1,11 +1,9 @@
 import {Component} from "angular2/core";
-import {Response} from "angular2/http";
 
-import AppService from "../service/app";
-import LoggerService from "../service/logger";
+import {AppBackend, Logger} from "../service";
 
 @Component({
-  selector: "hello",
+  selector: "app-hello",
   template: `
   <h2>Hello</h2>
   <button (click)="sayHello()">Say Hello</button>
@@ -14,11 +12,11 @@ import LoggerService from "../service/logger";
   <pre>{{ time | date:"medium" }}</pre>
   `
 })
-export default class HelloComponent {
+export class HelloComponent {
 
   private time: Date;
 
-  constructor(private logger: LoggerService, private appService: AppService) {
+  constructor(private logger: Logger, private backend: AppBackend) {
   }
 
   onInit() {
@@ -29,7 +27,7 @@ export default class HelloComponent {
   }
 
   updateData() {
-    this.appService.getData().subscribe((resp: Response) => {
+    this.backend.getData().subscribe((resp) => {
       if (resp.json()) {
         let data = <{ time: number }>resp.json();
         this.time = new Date(data.time);
