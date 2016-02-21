@@ -18,6 +18,9 @@
     "dtsm": "^0.13.0",
     "fs-extra": "^0.26.3",
     "local-web-server": "^1.1.1",
+    "postcss-cli": "^2.5.1",
+    "postcss-cssnext": "^2.4.0",
+    "postcss-import": "^8.0.2",
     "tsconfig-cli": "^0.1.1",
     "tsify": "^0.13.2",
     "typescript": "^1.7.5",
@@ -30,9 +33,11 @@
     "dist": "node tools/dist.js",
     "predest": "npm run build",
     "setup": "dtsm install",
-    "build": "browserify -o bundle.js -v -p [tsify] index.ts",
-    "prebuild": "tsconfig -u && tsfmt -r",
-    "watch": "watchify -o bundle.js -v -p [tsify] index.ts"
+    "build:css": "postcss -u postcss-import -u postcss-cssnext -o style.css style/index.css",
+    "build:js": "browserify -o bundle.js -v -p [tsify] script/index.ts",
+    "build": "npm run build:js && npm run build:css",
+    "prebuild:js": "tsconfig -u && tsfmt -r",
+    "watch": "watchify -o bundle.js -v -p [tsify] script/index.ts"
   },
   "author": "",
   "license": "MIT"

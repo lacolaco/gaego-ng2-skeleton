@@ -5,11 +5,13 @@ import {AppBackend, Logger} from "../service";
 @Component({
   selector: "app-hello",
   template: `
-  <h2>Hello</h2>
-  <button (click)="sayHello()">Say Hello</button>
-  <hr>
-  <pre>{{ time | date:"short" }}</pre>
-  <pre>{{ time | date:"medium" }}</pre>
+  <div class="app-hello">
+    <h2>Hello</h2>
+    <button (click)="sayHello()">Say Hello</button>
+    <hr>
+    <pre>{{ time | date:"short" }}</pre>
+    <pre>{{ time | date:"medium" }}</pre>
+  </div>
   `
 })
 export class HelloComponent {

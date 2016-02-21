@@ -2,9 +2,8 @@ const fs = require("fs-extra");
 
 const files = [
   "index.html",
-  "style.css",
   "bundle.js",
-  "style/"
+  "style.css"
 ];
 
 files.forEach((file) => {

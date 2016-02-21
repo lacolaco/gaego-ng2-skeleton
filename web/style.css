@@ -1,3 +1,16 @@
-h1 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif, serif;
+div.app-hello {
+  background: #bef8ff;
+  background: rgba(190, 248, 255, 0.91);
+}
+
+.root {
+  padding: 5px 10px 5px 10px;
+}
+
+ul.row {
+  padding-left: 0;
+}
+
+ul.row li{
+  display: inline;
 }

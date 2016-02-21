@@ -36,6 +36,6 @@ export class App {
   ngOnInit() {
     setInterval(() => {
       this.clock = moment().format("YYYY/MM/DD HH:mm:ss.SS");
-    }, 1)
+    }, 100)
   }
 }
